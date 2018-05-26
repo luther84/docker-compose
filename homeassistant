@@ -15,7 +15,7 @@ services:
     networks:
       - web
     ports:
-      - "8123"
+      - "8123:8123"
     labels:
       - traefik.backend=home-assistant
       - "traefik.docker.network=web"
