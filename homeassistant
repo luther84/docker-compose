@@ -1,0 +1,25 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  homeassistant:
+    container_name: home-assistant
+    restart: unless-stopped
+    image: homeassistant/home-assistant
+    volumes:
+      - /srv/homeassistant/hass-config:/config
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - web
+    ports:
+      - "8123"
+    labels:
+      - traefik.backend=home-assistant
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:home.my-domain.org"
+      - "traefik.basic.port=8123"
+      - "traefik.basic.protocol=http"
