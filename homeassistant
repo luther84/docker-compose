@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
     image: homeassistant/home-assistant
     volumes:
-      - /srv/homeassistant/hass-config:/config
+      - /srv/datalink/Home:/config
       - /etc/localtime:/etc/localtime:ro
     networks:
       - web
