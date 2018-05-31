@@ -6,7 +6,7 @@
       - /srv/datalink/Home/postgres:/var/lib/postgresql/data
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - POSTGRES_USER='myusername'
-      - POSTGRES_PASSWORD='mypassword'
+      - POSTGRES_USER=myusername
+      - POSTGRES_PASSWORD=mypassword
     ports:
       - "5432:5432"
