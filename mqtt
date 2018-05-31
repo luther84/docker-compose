@@ -1,0 +1,12 @@
+  mqtt:
+    container_name: MQTT
+    restart: unless-stopped
+    image: eclipse-mosquitto
+    volumes:
+      - /srv/docker/mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - /srv/docker/mosquitto/log:/mosquitto/log
+      - /srv/docker/mosquitto/data:/mosquitto/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "1883:1883"
+- "9001:9001"
