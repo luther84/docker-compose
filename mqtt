@@ -3,10 +3,17 @@
     restart: unless-stopped
     image: eclipse-mosquitto
     volumes:
-      - /srv/docker/mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - /srv/docker/mosquitto/log:/mosquitto/log
-      - /srv/docker/mosquitto/data:/mosquitto/data
+      - /srv/datalink/Home/mqtt/config:/mosquitto/config:ro
+      - /srv/datalink/Home/mqtt/log:/mosquitto/log
+      - /srv/datalink/Home/data:/mosquitto/data
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "1883:1883"
-- "9001:9001"
+      - "9001:9001"
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  default:
+    external:
+      name: "web"
