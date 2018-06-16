@@ -9,14 +9,15 @@ services:
       - 8080:8080
       - 80:80
       - 443:443
-    networks:
-      - web
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /srv/traefik/traefik.toml:/traefik.toml
+      - /srv/datalink/Traefik/traefik.toml:/traefik.toml
       - /srv/traefik/acme.json:/acme.json
     container_name: traefik
+    labels:
+      - "traefik.enable=false"
 
 networks:
-  web:
-    external: true
+  default:
+    external:
+      name: "web"
