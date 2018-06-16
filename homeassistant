@@ -1,9 +1,5 @@
 version: '3'
 
-networks:
-  web:
-    external: true
-
 services:
   homeassistant:
     container_name: home-assistant
@@ -12,8 +8,6 @@ services:
     volumes:
       - /srv/datalink/Home:/config
       - /etc/localtime:/etc/localtime:ro
-    networks:
-      - web
     ports:
       - "8123:8123"
     labels:
@@ -23,3 +17,8 @@ services:
       - "traefik.basic.frontend.rule=Host:home.my-domain.org"
       - "traefik.basic.port=8123"
       - "traefik.basic.protocol=http"
+
+networks:
+  default:
+    external:
+      name: "web"
