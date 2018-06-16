@@ -10,3 +10,10 @@
       - POSTGRES_PASSWORD=mypassword
     ports:
       - "5432:5432"
+    labels:
+      - "traefik.enable=false"
+      
+networks:
+  default:
+    external:
+      name: "web"
